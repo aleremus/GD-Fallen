@@ -1,2 +1,2 @@
 # GD Fallen
- Repo for hackaton Sineus
+ Repo for hackathon Sineus
