@@ -28,7 +28,7 @@ public class Player : Entity
         }
         else if (damage < 0)
         {
-            Death();
+            
         }
         CurrentHp = Mathf.Clamp(CurrentHp, 0, maxHP);
     }
