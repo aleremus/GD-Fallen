@@ -264,4 +264,8 @@ public class PMoveController : MonoBehaviour
 
     }
 
+    public float GetPlayerSpeed()
+    {
+        return velocity.magnitude / movementSpeed;
+    }
 }

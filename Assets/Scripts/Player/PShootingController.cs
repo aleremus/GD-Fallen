@@ -21,7 +21,7 @@ public class PShootingController : MonoBehaviour
 
     public TrailRenderer BulletTrail;
 
-    public GameObject weapon;
+    public WeaponController weapon;
 
     public LayerMask Mask;
 
@@ -31,16 +31,16 @@ public class PShootingController : MonoBehaviour
     float reloadTimeBuffer = -3;
     private void Update()
     {
-/*        if (Input.GetKeyDown(KeyCode.R)) reloadTimeBuffer = Time.realtimeSinceStartup;
-        if (gameObject.GetComponent<PMoveController>().weapon.ammunitionCurrent == 0) 
+        if (Input.GetKeyDown(KeyCode.R)) reloadTimeBuffer = Time.realtimeSinceStartup;
+        if (weapon.ammunitionCurrent == 0) 
         {
 
             //_character.PlayReloadAnimation();
 
-            gameObject.GetComponent<PMoveController>().weapon.FillAmmunition(10);
+            weapon.FillAmmunition(10);
             reloadTimeBuffer = Time.realtimeSinceStartup;
 
-        }*/
+        }
         //Debug.Log(_character.characterAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name);
     }
     
@@ -57,7 +57,7 @@ public class PShootingController : MonoBehaviour
     public void Shoot()
     {
         
-/*        if (LastShootTime + ShootDelay < Time.time && gameObject.GetComponent<PMoveController>().weapon.ammunitionCurrent >0&& Time.realtimeSinceStartup - reloadTimeBuffer >= 2.0375)
+        if (LastShootTime + ShootDelay < Time.time && weapon.ammunitionCurrent >0&& Time.realtimeSinceStartup - reloadTimeBuffer >= 2.0375)
         {
 
 
@@ -84,7 +84,7 @@ public class PShootingController : MonoBehaviour
 
                 LastShootTime = Time.time;
             }
-        }*/
+        }
     }
 
     private Vector3 GetDirection()
