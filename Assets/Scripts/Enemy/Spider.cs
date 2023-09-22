@@ -20,4 +20,17 @@ public class Spider : Enemy
     {
         
     }
+
+    void Attack()
+    {
+        
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+
+        }
+    }
 }
