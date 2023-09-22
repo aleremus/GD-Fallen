@@ -83,7 +83,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &2909081814867391413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,3 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpPrefab: {fileID: 6844606659825920915, guid: 7bbbe025e793c4941b22fee8f30c4fd4, type: 3}
   entity: {fileID: 0}
+  sprites:
+  - {fileID: 21300000, guid: eaa945f0339b98c4a8bb603f91fc5c07, type: 3}
+  - {fileID: 21300000, guid: aa15c9a603aba504cae23beb99df8dec, type: 3}
+  - {fileID: 21300000, guid: c77485578bb1b7f4089061fe0d85a65d, type: 3}

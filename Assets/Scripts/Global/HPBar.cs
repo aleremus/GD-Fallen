@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class HPBar : MonoBehaviour
@@ -8,6 +9,7 @@ public class HPBar : MonoBehaviour
     RectTransform rectTransform;
     [SerializeField] GameObject hpPrefab;
     [SerializeField] Entity entity;
+    [SerializeField] List<Sprite> sprites;
     Player player;
 
     List<(GameObject hp, RectTransform rectTransform)> hps;
@@ -45,6 +47,7 @@ public class HPBar : MonoBehaviour
     void GainHP()
     {
         var hp = Instantiate(hpPrefab, rectTransform);
+        hp.GetComponent<Image>().sprite = sprites[Random.Range(0, sprites.Count)];
         var hpRectT = hp.GetComponent<RectTransform>();
         hps.Add((hp, hpRectT));
         hpRectT.Translate(Vector3.right * hpRectT.rect.width * transform.localScale.x * (hps.Count - 1));
