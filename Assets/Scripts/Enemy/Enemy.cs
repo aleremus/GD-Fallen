@@ -20,7 +20,7 @@ public class Enemy : Entity
         {
 
         }
-        CurrentHp = Mathf.Clamp(CurrentHp, 0, maxHP);
+        CurrentHp = Mathf.Clamp(CurrentHp, 0, MaxHP);
     }
 
     // Start is called before the first frame update
