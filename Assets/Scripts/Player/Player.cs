@@ -5,15 +5,17 @@ using UnityEngine;
 
 public class Player : Entity
 {
+    [SerializeField] private Animator _shotgunAnimator;
     [SerializeField] Weapon weapon;
     [SerializeField] int maxHP;
     [SerializeField] private CanvasController _canvasController;
+    private Rigidbody _rigidbody;
 
     private void Awake()
     {
         MaxHP = maxHP;
         CurrentHp = MaxHP;
-
+        _rigidbody = GetComponent<Rigidbody>();
     }
     override public void DealDamage(Entity reciever, int damage)
     {
@@ -43,9 +45,10 @@ public class Player : Entity
     // Update is called once per frame
     void Update()
     {
-
+        if (_rigidbody.velocity.magnitude > 0.1 && !_shotgunAnimator.GetCurrentAnimatorStateInfo(0).IsName("Shoot")) _shotgunAnimator.Play("Walk");
+        else if (_shotgunAnimator.GetCurrentAnimatorStateInfo(0).IsName("Shoot")) _shotgunAnimator.Play("Idle");
         if (Input.GetKeyDown(KeyCode.Mouse0))
-            weapon.Fire();
+            Fire();
         if (Input.GetKeyDown(KeyCode.E))
             ReceiveDamage(1);
         if (Input.GetKeyDown(KeyCode.Q))
@@ -54,5 +57,10 @@ public class Player : Entity
     public void Death()
     {
         _canvasController.RestartShow();
+    }
+    private void Fire()
+    {
+        weapon.Fire();
+        _shotgunAnimator.Play("Shoot");
     }
 }
