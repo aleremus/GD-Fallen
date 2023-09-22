@@ -8,10 +8,12 @@ public class HPBar : MonoBehaviour
     RectTransform rectTransform;
     [SerializeField] GameObject hpPrefab;
     [SerializeField] Entity entity;
+    Player player;
 
     List<(GameObject hp, RectTransform rectTransform)> hps;
     void Start()
     {
+        player = FindObjectOfType<Player>();
         hps = new();
         rectTransform = GetComponent<RectTransform>();
     }
@@ -24,7 +26,11 @@ public class HPBar : MonoBehaviour
             GainHP();
         else if (entity.CurrentHp < hps.Count)
             LoseHp();
-
+        if (entity is not Player)
+        {
+            transform.LookAt(player.transform, Vector3.up);
+            
+        }
     }
 
    

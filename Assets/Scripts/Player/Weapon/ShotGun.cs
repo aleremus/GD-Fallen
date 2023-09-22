@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShotGun : Weapon
 {
+    //public float shootingRate;
     [SerializeField] int damage;
     [SerializeField] float cooldown;
     [SerializeField] float radius;
