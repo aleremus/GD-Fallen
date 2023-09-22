@@ -17,9 +17,10 @@ public class DestructibleController : MonoBehaviour
     {
         
     }
-    public void Destruct()
+    public void OnDestroy()
     {
         Instantiate(destroyedObjectPrefab, gameObject.transform.position, gameObject.transform.rotation);
-        Destroy(gameObject);
+        
+/*        Destroy(gameObject);*/
     }
 }

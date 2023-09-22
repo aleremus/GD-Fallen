@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/CombatController.cs.meta
+guid: 1aa35c17ff39ece468f36a23fe458b0c
+========
+guid: 011c73cbf17940a40b34bc59ca8187b2
+>>>>>>>> 4fb65d25bd75613c730898b786c67caeb4556fa4:Assets/Scripts/Enemy/EnemyMovement.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

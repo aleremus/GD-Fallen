@@ -7,6 +7,7 @@ public class Player : Entity
 {
     [SerializeField] Weapon weapon;
     [SerializeField] int maxHP;
+    [SerializeField] private CanvasController _canvasController;
 
     private void Awake()
     {
@@ -27,7 +28,7 @@ public class Player : Entity
         }
         else if (damage < 0)
         {
-            
+            Death();
         }
         CurrentHp = Mathf.Clamp(CurrentHp, 0, maxHP);
     }
@@ -49,5 +50,9 @@ public class Player : Entity
             ReceiveDamage(1);
         if (Input.GetKeyDown(KeyCode.Q))
             ReceiveDamage(-1);
+    }
+    public void Death()
+    {
+        _canvasController.RestartShow();
     }
 }

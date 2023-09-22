@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3553676535194145716}
   - component: {fileID: 3553676535194145717}
   - component: {fileID: 3553676535194145722}
+  - component: {fileID: 360483762443911567}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 971b160041ad14c4883d0bbf52a9a091, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,6 +98,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &360483762443911567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3553676535194145720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b577082389ab1f74689393ea7c4dc2bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyedObjectPrefab: {fileID: 1098047562644598706, guid: 5116c1960251553488a8862091a0708e, type: 3}
+  particles: {fileID: 0}
 --- !u!1 &3553676535721090236
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,6 +172,7 @@ GameObject:
   - component: {fileID: 3553676535724409486}
   - component: {fileID: 3553676535724409487}
   - component: {fileID: 3553676535724409484}
+  - component: {fileID: 4992862614294738500}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -207,7 +223,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 971b160041ad14c4883d0bbf52a9a091, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -242,3 +258,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4992862614294738500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3553676535724409490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b577082389ab1f74689393ea7c4dc2bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyedObjectPrefab: {fileID: 1098047562644598706, guid: 5116c1960251553488a8862091a0708e, type: 3}
+  particles: {fileID: 0}
