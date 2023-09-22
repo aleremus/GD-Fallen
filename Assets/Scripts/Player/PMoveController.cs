@@ -6,44 +6,44 @@ using UnityEngine.Events;
 
 public class PMoveController : MonoBehaviour
 {
-    [SerializeField] GameObject cameraObject;
+    [SerializeField]private GameObject cameraObject;
     //Run
-    public float movementSpeed = 5;
-    public float boostCoefficient = 5;
+    [SerializeField]private float movementSpeed = 5;
+    [SerializeField]private float boostCoefficient = 5;
     //Jump
-    public float gConstant = 10;
-    public float fallDownCoefficient;
-    public float jumpHeigth;
-    public float jumpTimeCoefficient;  
-    public float jumpForce;
-    public float jumpChargeTime;
-    public float jumpDecreaseCoefficent;
-    public bool isJumpChargable = false;
+    [SerializeField]private float gConstant = 10;
+    [SerializeField]private float fallDownCoefficient;
+    [SerializeField]private float jumpHeigth;
+    [SerializeField]private float jumpTimeCoefficient;  
+    [SerializeField]private float jumpForce;
+    [SerializeField]private float jumpChargeTime;
+    [SerializeField]private float jumpDecreaseCoefficent;
+    [SerializeField]private bool isJumpChargable = false;
 
-    public float distanceToGround;
+    [SerializeField]private float distanceToGround;
     //Mouse
-    public bool invertMouse;
-    public float mouseSensitivity;
+    [SerializeField]private bool invertMouse;
+    [SerializeField]private float mouseSensitivity;
 
 
 
-    public KeyCode jumpButton;
-    //public KeyCode WASD;
-    public KeyCode dashButton;
-    public KeyCode shootButton;
+    [SerializeField]private KeyCode jumpButton;
+    //[SerializeField]private KeyCode WASD;
+    [SerializeField]private KeyCode dashButton;
+    [SerializeField]private KeyCode shootButton;
 
-    public UnityEvent jump;
-    public UnityEvent move;
-    public UnityEvent shoot;
-    public UnityEvent dash;
-    //public UnityEvent recieveDamage;
-    public UnityEvent die;
+    [SerializeField]private UnityEvent jump;
+    [SerializeField]private UnityEvent move;
+    [SerializeField]private UnityEvent shoot;
+    [SerializeField]private UnityEvent dash;
+    //[SerializeField]private UnityEvent recieveDamage;
+    [SerializeField]private UnityEvent die;
 
 
-    public AudioSource jumpSound;
-    public AudioSource shootSound;
+    [SerializeField]private AudioSource jumpSound;
+    [SerializeField]private AudioSource shootSound;
 
-    public Vector3 velocity;
+    [SerializeField]private Vector3 velocity;
     private Vector3 jumpVelocity;
 
     float _jumpForce = 0;

@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seed: 0
-  MazeSize: {x: 100, y: 100}
+  MazeSize: {x: 50, y: 50}
   MazeCellExample: {fileID: 3553676535721090236, guid: 930e883423c832e43b4c3ee819f79e2d, type: 3}
 --- !u!64 &949827792
 MeshCollider:
