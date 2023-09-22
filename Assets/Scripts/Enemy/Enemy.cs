@@ -5,15 +5,6 @@ using UnityEngine;
 
 public class Enemy : Entity
 {
-
-    [SerializeField] int maxHP;
-
-    private void Awake()
-    {
-        MaxHP = maxHP;
-        CurrentHp = MaxHP;
-
-    }
     override public void DealDamage(Entity reciever, int damage)
     {
         
