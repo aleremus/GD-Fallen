@@ -8,6 +8,7 @@ public class PCameraController : MonoBehaviour
 {
     [SerializeField] private PMoveController _pMoveController;
     [SerializeField]private CinemachineVirtualCamera _virtualCamera;
+/*    [SerializeField]private CinemachineBasicPostProcessing _postProcessing;*/
     [SerializeField]private CinemachineBasicMultiChannelPerlin _perlinNoise;
     [SerializeField]private float walkShakeAmplitude;
     [SerializeField]private float walkShakeSpeed;
@@ -20,7 +21,7 @@ public class PCameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CameraBend(walkShakeSpeed * _pMoveController.GetPlayerSpeed(), walkShakeAmplitude*_pMoveController.GetPlayerSpeed());
+        CameraBend(walkShakeSpeed * _pMoveController.GetPlayerSpeed(), walkShakeAmplitude*_pMoveController.GetPlayerSpeed()*Input.GetAxis("Horizontal"));
     }
     void CameraBend(float intensity,float amplitude)
     {
