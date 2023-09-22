@@ -14,7 +14,6 @@ public class HPBar : MonoBehaviour
     {
         hps = new();
         rectTransform = GetComponent<RectTransform>();
-        GenerateHP();
     }
 
     // Update is called once per frame
@@ -28,20 +27,7 @@ public class HPBar : MonoBehaviour
 
     }
 
-    void GenerateHP()
-    {
-        var hp = Instantiate(hpPrefab, rectTransform);
-        var hpRectT = hp.GetComponent<RectTransform>();
-
-        hps.Add((hp, hpRectT)); 
-        for (int i = 1; i < entity.MaxHP; i++)
-        {
-            hp = Instantiate(hpPrefab, rectTransform);
-            hpRectT = hp.GetComponent<RectTransform>();
-            hpRectT.Translate(Vector3.right * hpRectT.rect.width * i);
-            hps.Add((hp, hpRectT));
-        }
-    }
+   
 
     void LoseHp()
     {
@@ -55,7 +41,7 @@ public class HPBar : MonoBehaviour
         var hp = Instantiate(hpPrefab, rectTransform);
         var hpRectT = hp.GetComponent<RectTransform>();
         hps.Add((hp, hpRectT));
-        hpRectT.Translate(Vector3.right * hpRectT.rect.width * (hps.Count - 1));
+        hpRectT.Translate(Vector3.right * hpRectT.rect.width * transform.localScale.x * (hps.Count - 1));
 
     }
 }

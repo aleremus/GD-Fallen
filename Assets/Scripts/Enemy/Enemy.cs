@@ -6,15 +6,30 @@ using UnityEngine;
 public class Enemy : Entity
 {
 
+    [SerializeField] int maxHP;
 
+    private void Awake()
+    {
+        MaxHP = maxHP;
+        CurrentHp = MaxHP;
+
+    }
     override public void DealDamage(Entity reciever, int damage)
     {
-        throw new NotImplementedException();
+        
     }
 
     override public void ReceiveDamage(int damage)
     {
+        CurrentHp -= damage;
+        if (damage > 0)
+        {
+        }
+        else if (damage < 0)
+        {
 
+        }
+        CurrentHp = Mathf.Clamp(CurrentHp, 0, maxHP);
     }
 
     // Start is called before the first frame update

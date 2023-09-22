@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Player : Entity
 {
+    [SerializeField] Weapon weapon;
     [SerializeField] int maxHP;
 
     private void Awake()
@@ -41,6 +42,9 @@ public class Player : Entity
     // Update is called once per frame
     void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+            weapon.Fire();
         if (Input.GetKeyDown(KeyCode.E))
             ReceiveDamage(1);
         if (Input.GetKeyDown(KeyCode.Q))

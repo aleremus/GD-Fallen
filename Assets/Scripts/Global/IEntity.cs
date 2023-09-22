@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public abstract class Entity : MonoBehaviour
+public class Entity : MonoBehaviour
 {
     // Start is called before the first frame update
 
@@ -15,8 +15,8 @@ public abstract class Entity : MonoBehaviour
 
     public Action OnDeath { get; set; }
 
-    abstract public void DealDamage(Entity reciever, int damage);
+    virtual public void DealDamage(Entity reciever, int damage) { }
 
-    abstract public void ReceiveDamage(int damage);
+    virtual public void ReceiveDamage(int damage) { }
 
 }
