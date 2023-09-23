@@ -35,9 +35,9 @@ public class Player : Entity
         if (damage > 0)
         {
         }
-        else if (damage < 0)
+        else if (damage <= 0)
         {
-            
+            Death();
         }
         CurrentHp = Mathf.Clamp(CurrentHp, 0, maxHP);
     }

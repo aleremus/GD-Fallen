@@ -54,7 +54,7 @@ public class CombatController : MonoBehaviour
             particle.transform.position = target.transform.position;
             particle.transform.rotation = target.transform.rotation;
         }
-        Destroy(target);
+        target.GetComponent<DestructibleController>().Destroy();
     }
     public void TryToBreak()
     {

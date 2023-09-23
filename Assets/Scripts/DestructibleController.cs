@@ -17,14 +17,16 @@ public class DestructibleController : MonoBehaviour
     {
         
     }
-    public void OnDestroy()
+    public void Destroy()
     {
-        
         Instantiate(destroyedObjectPrefab, gameObject.transform.position, gameObject.transform.rotation);
         gameObject.layer = 0;
         var nmu = FindObjectOfType<NavMeshUpdater>();
         if (nmu)
             nmu.UpdateNavMesh();
-/*        Destroy(gameObject);*/
+        Destroy(gameObject);
+    }
+    public void OnDestroy()
+    {
     }
 }
