@@ -59,7 +59,7 @@ public class CombatController : MonoBehaviour
     public void TryToBreak()
     {
         GameObject target = TryToHit(_camera.position, _camera.forward, _distance).transform?.gameObject;
-        if (TryToHit(_camera.position, _camera.forward, _distance).transform?.gameObject != null) TryToBreak(target);
+        if (target != null) TryToBreak(target);
     }
     public void AddCombo()
     {
