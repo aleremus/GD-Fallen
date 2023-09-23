@@ -19,8 +19,10 @@ public class DestructibleController : MonoBehaviour
     }
     public void OnDestroy()
     {
-        Instantiate(destroyedObjectPrefab, gameObject.transform.position, gameObject.transform.rotation);
         
+        Instantiate(destroyedObjectPrefab, gameObject.transform.position, gameObject.transform.rotation);
+        gameObject.layer = 0;
+        FindObjectOfType<NavMeshUpdater>().UpdateNavMesh();
 /*        Destroy(gameObject);*/
     }
 }

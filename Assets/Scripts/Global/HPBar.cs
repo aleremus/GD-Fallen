@@ -11,6 +11,7 @@ public class HPBar : MonoBehaviour
     [SerializeField] Entity entity;
     [SerializeField] List<Sprite> sprites;
     Player player;
+    bool _isCoroutine;
 
     List<(GameObject hp, RectTransform rectTransform)> hps;
     void Start()
@@ -24,33 +25,60 @@ public class HPBar : MonoBehaviour
     void Update()
     {
 
-        if (entity.CurrentHp > hps.Count)
-            GainHP();
-        else if (entity.CurrentHp < hps.Count)
-            LoseHp();
+        
         if (entity is not Player)
         {
             transform.LookAt(player.transform, Vector3.up);
             
         }
+        if (_isCoroutine)
+            return;
+        if (entity.CurrentHp > hps.Count)
+            StartCoroutine(GainHP());
+        else if (entity.CurrentHp < hps.Count)
+            StartCoroutine(LoseHp());
     }
 
    
 
-    void LoseHp()
+
+    IEnumerator LoseHp()
     {
+        _isCoroutine = true;
         (GameObject hp, var _) = hps[hps.Count - 1];
         hps.RemoveAt(hps.Count - 1);
+        
+
+        float time = Time.time + 0.5f;
+
+        while (time > Time.time)
+        {
+            hp.transform.Translate(Vector3.up * Time.deltaTime * 1000);
+            yield return new WaitForEndOfFrame();
+        }
+
         DestroyObject(hp);
+        _isCoroutine = false;
     }
 
-    void GainHP()
+    IEnumerator GainHP()
     {
+        _isCoroutine = true;
         var hp = Instantiate(hpPrefab, rectTransform);
-        hp.GetComponent<Image>().sprite = sprites[Random.Range(0, sprites.Count)];
+        //hp.GetComponent<Image>().sprite = sprites[Random.Range(0, sprites.Count)];
         var hpRectT = hp.GetComponent<RectTransform>();
         hps.Add((hp, hpRectT));
+
+        float time = Time.time + 0.5f;
         hpRectT.Translate(Vector3.right * hpRectT.rect.width * transform.localScale.x * (hps.Count - 1));
+        hpRectT.Translate(Vector3.up * 500);
+
+        while (time > Time.time)
+        {
+            hp.transform.Translate(Vector3.down * Time.deltaTime * 1000);
+            yield return new WaitForEndOfFrame();
+        }
+        _isCoroutine = false;
 
     }
 }
