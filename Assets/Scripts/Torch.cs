@@ -13,8 +13,10 @@ public class Torch : MonoBehaviour
     Vector3 startPosition;
     Light light;
     float _nextBlink;
+    float randStart;
     void Start()
     {
+        randStart = Random.Range(0f, intensityCurve.keys[intensityCurve.length - 1].time);
         startPosition = transform.localPosition;
         light = GetComponent<Light>();
         _nextBlink = Time.time + 1 / blinksPerSecond;
@@ -23,7 +25,7 @@ public class Torch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        light.intensity = intensityCurve.Evaluate(Time.time % 1);
+        light.intensity = intensityCurve.Evaluate((Time.time + randStart) % intensityCurve.keys[intensityCurve.length - 1].time);
         if (_nextBlink > Time.time)
             return;
         _nextBlink = Time.time + 1 / blinksPerSecond;
