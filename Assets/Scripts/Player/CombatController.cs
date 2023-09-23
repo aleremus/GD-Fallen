@@ -12,6 +12,7 @@ public class CombatController : MonoBehaviour
     [SerializeField] private float _distance;
     [SerializeField] private GameObject particlesPrefab;
     [SerializeField] private GameObject shardsPrefab;
+    [SerializeField] private Animator _fistAnimator;
     private Rigidbody _rigidbody;
     private int currentCombo;
     private void Awake()
@@ -34,7 +35,6 @@ public class CombatController : MonoBehaviour
         {
             GameObject target = TryToHit(_camera.position, _camera.forward, _distance).transform?.gameObject;
             if (TryToHit(_camera.position, _camera.forward, _distance).transform?.gameObject != null) TryToBreak(target);
-            currentCombo--;
         }
     }
     private RaycastHit TryToHit(Vector3 from, Vector3 direction, float distance)
@@ -45,16 +45,8 @@ public class CombatController : MonoBehaviour
     }
     private void TryToBreak(GameObject target)
     {
-        if (particlesPrefab != null)
-        {
-            GameObject particle = Instantiate(particlesPrefab);
-            particle.transform.position = target.transform.position;
-            particle.transform.rotation = target.transform.rotation;
-            particle = Instantiate(shardsPrefab);
-            particle.transform.position = target.transform.position;
-            particle.transform.rotation = target.transform.rotation;
-        }
-        target.GetComponent<DestructibleController>().Destroy();
+        _fistAnimator.Play("FistAttack");
+        StartCoroutine(Destroy(target));
     }
     public void TryToBreak()
     {
@@ -67,5 +59,21 @@ public class CombatController : MonoBehaviour
         {
             currentCombo++;
         }
+    }
+    IEnumerator Destroy(GameObject target)
+    {
+        yield return new WaitForSeconds(0.8f);
+        if (particlesPrefab != null)
+        {
+            GameObject particle = Instantiate(particlesPrefab);
+            particle.transform.position = target.transform.position;
+            particle.transform.rotation = target.transform.rotation;
+            particle = Instantiate(shardsPrefab);
+            particle.transform.position = target.transform.position;
+            particle.transform.rotation = target.transform.rotation;
+        }
+        currentCombo--;
+
+        target.GetComponent<DestructibleController>().Destroy();
     }
 }
