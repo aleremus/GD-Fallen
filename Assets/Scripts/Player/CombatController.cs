@@ -31,7 +31,7 @@ public class CombatController : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(debugKey)) AddCombo();
-        if (Input.GetKeyDown(key) && currentCombo > 0)
+        if (Input.GetKeyDown(key) && FindObjectOfType<GameManager>().canSmash)
         {
             GameObject target = TryToHit(_camera.position, _camera.forward, _distance).transform?.gameObject;
             if (TryToHit(_camera.position, _camera.forward, _distance).transform?.gameObject != null) TryToBreak(target);
@@ -62,6 +62,7 @@ public class CombatController : MonoBehaviour
     }
     IEnumerator Destroy(GameObject target)
     {
+        FindObjectOfType<GameManager>().Smash();
         yield return new WaitForSeconds(0.8f);
         if (particlesPrefab != null)
         {

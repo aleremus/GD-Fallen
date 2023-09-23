@@ -42,7 +42,7 @@ public class Spider : Enemy
         IsDead = true;
         GameManager gameManager = FindObjectOfType<GameManager>();
         if (gameManager)
-            gameManager.EnemiesKilled++;
+            gameManager.KillEnemy();
         //GetComponent<Collider>().enabled = false;
         GetComponentInParent<Animator>().enabled = false;
         GetComponentInParent<NavMeshAgent>().enabled = false;

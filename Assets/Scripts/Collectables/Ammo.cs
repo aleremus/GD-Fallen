@@ -61,7 +61,7 @@ public class Ammo : MonoBehaviour
             return;
         }
 
-        FindObjectOfType<GameManager>().amountOfAmmo += ammoInPack;
+        FindObjectOfType<GameManager>().CollectAmmo(ammoInPack);
         GameObject.Destroy(gameObject);
     }
 }

@@ -167,7 +167,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: c76ce7e68170ad946a01bb12dae73786, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 834da1676bd4d1a49a612a202a3abe90, type: 2}
+      objectReference: {fileID: 2100000, guid: 4a4b542a4b77c57439c41dbda00542d4, type: 2}
     - target: {fileID: 919132149155446097, guid: c76ce7e68170ad946a01bb12dae73786, type: 3}
       propertyPath: m_Name
       value: Cartridge

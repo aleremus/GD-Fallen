@@ -73,6 +73,8 @@ MonoBehaviour:
   patrolPonts: []
   speed: 0
   fov: 90
+  fovRadius: 20
+  anyDetectionRadius: 5
   agroTime: 3
 --- !u!65 &5162680494735540850
 BoxCollider:
@@ -203,7 +205,7 @@ MeshCollider:
   m_GameObject: {fileID: 4262939907794162788}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -225,3 +227,16 @@ MonoBehaviour:
   attackCooldown: 5
   maxHP: 2
   damage: 1
+--- !u!65 &7632114468460632547
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4262939907794162788}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9424567, y: 0.18728985, z: 1.0761161}
+  m_Center: {x: 9.064121e-19, y: 0.0015577044, z: -7.5969955e-18}

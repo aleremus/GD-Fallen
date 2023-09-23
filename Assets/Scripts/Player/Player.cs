@@ -31,15 +31,22 @@ public class Player : Entity
 
     override public void ReceiveDamage(int damage)
     {
+        if (IsDead)
+            return;
         CurrentHp -= damage;
         if (damage > 0)
         {
         }
         else if (damage <= 0)
         {
-            Death();
+
         }
         CurrentHp = Mathf.Clamp(CurrentHp, 0, maxHP);
+        if(CurrentHp <= 0)
+        {
+            Death();
+        }
+
     }
 
 
@@ -53,6 +60,8 @@ public class Player : Entity
     void Update()
     {
 
+        if (IsDead)
+            return;
         if (_rigidbody.velocity.magnitude > 0.1 && !_shotgunAnimator.GetCurrentAnimatorStateInfo(0).IsName("Shoot")) _shotgunAnimator.Play("Walk");
         else if (!_shotgunAnimator.GetCurrentAnimatorStateInfo(0).IsName("Shoot")) _shotgunAnimator.Play("ShotgunIdle");
 
@@ -62,6 +71,8 @@ public class Player : Entity
             ReceiveDamage(1);
         if (Input.GetKeyDown(KeyCode.Q))
             ReceiveDamage(-1);
+        if (Input.GetKeyDown(KeyCode.R))
+            gameManager.Reload();
         if (_shotgunAnimator.GetCurrentAnimatorStateInfo(0).IsName("Shoot") && _shotgunAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime * _shotgunAnimator.GetCurrentAnimatorStateInfo(0).length <= 0.3 && _shotgunAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime * _shotgunAnimator.GetCurrentAnimatorStateInfo(0).length >= 0.2) flash.SetActive(true);
         else flash.SetActive(false);
 
@@ -72,7 +83,7 @@ public class Player : Entity
     }
     private void Fire()
     {
-        if (gameManager.amountOfAmmo < ammoPerShot)
+        if (!gameManager.reloaded)
         {
             
             if (sounds[0])
@@ -81,13 +92,14 @@ public class Player : Entity
             }
             return;
         }
+        gameManager.Shot();
         if (hPBar)
             hPBar.Shot();
         if (sounds[1])
         {
             _shotgunAudioSorce.PlayOneShot(sounds[1]);
         }
-        gameManager.amountOfAmmo -= ammoPerShot;
+        gameManager.CollectAmmo(-ammoPerShot);
         weapon.Fire();
         _shotgunAnimator.Play("Shoot");
     }
