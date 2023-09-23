@@ -44,6 +44,7 @@ public class Spider : Enemy
         if (gameManager)
             gameManager.EnemiesKilled++;
         GetComponent<Collider>().enabled = false;
+        GetComponent<Animator>().enabled = false;
         GetComponent<NavMeshAgent>().enabled = false;
         GetComponent<EnemyMovement>().enabled = false;
         float time = Time.time + deathAnimationTime;
