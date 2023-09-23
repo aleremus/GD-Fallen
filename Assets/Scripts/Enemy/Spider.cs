@@ -43,20 +43,22 @@ public class Spider : Enemy
         GameManager gameManager = FindObjectOfType<GameManager>();
         if (gameManager)
             gameManager.EnemiesKilled++;
-        GetComponent<Collider>().enabled = false;
-        GetComponent<Animator>().enabled = false;
-        GetComponent<NavMeshAgent>().enabled = false;
-        GetComponent<EnemyMovement>().enabled = false;
+        //GetComponent<Collider>().enabled = false;
+        GetComponentInParent<Animator>().enabled = false;
+        GetComponentInParent<NavMeshAgent>().enabled = false;
+        GetComponentInParent<EnemyMovement>().enabled = false;
         float time = Time.time + deathAnimationTime;
         while (time > Time.time)
         {
-            transform.Rotate(Vector3.left * 90 /  deathAnimationTime * Time.deltaTime);
+            transform.parent.Rotate(Vector3.left * 90 /  deathAnimationTime * Time.deltaTime);
             yield return new WaitForEndOfFrame();
         }
     }
 
     void Attack()
     {
+        if (IsDead)
+            return;
         if (_nextAttack > Time.time)
             return;
 
