@@ -9,6 +9,9 @@ public class Spider : Enemy
     [SerializeField] float attackCooldown;
     [SerializeField] int maxHP;
     [SerializeField] int damage;
+    [SerializeField] ParticleSystem particleSystem;
+
+    Rigidbody rigidbody;
     Player player;
     float _nextAttack;
     
@@ -16,9 +19,18 @@ public class Spider : Enemy
 
     private void Awake()
     {
+        rigidbody = GetComponent<Rigidbody>();
         MaxHP = maxHP;
         CurrentHp = MaxHP;
         _nextAttack = Time.time;
+    }
+
+    public override void ReceiveDamage(int damage)
+    {
+        
+            particleSystem.Play();
+        base.ReceiveDamage(damage);
+        
     }
 
     private void Start()
@@ -43,16 +55,16 @@ public class Spider : Enemy
         GameManager gameManager = FindObjectOfType<GameManager>();
         if (gameManager)
             gameManager.KillEnemy();
-        //GetComponent<Collider>().enabled = false;
+        GetComponent<BoxCollider>().enabled = false;
+        GetComponent<MeshCollider>().enabled = true;
+        rigidbody.constraints = RigidbodyConstraints.None;
         GetComponentInParent<Animator>().enabled = false;
         GetComponentInParent<NavMeshAgent>().enabled = false;
         GetComponentInParent<EnemyMovement>().enabled = false;
+        
+        yield return new WaitForSeconds(0.2f);
         float time = Time.time + deathAnimationTime;
-        while (time > Time.time)
-        {
-            transform.parent.Rotate(Vector3.left * 90 /  deathAnimationTime * Time.deltaTime);
-            yield return new WaitForEndOfFrame();
-        }
+        rigidbody.AddForceAtPosition(transform.TransformDirection(Vector3.up * 100), Vector3.up + transform.position);
     }
 
     void Attack()

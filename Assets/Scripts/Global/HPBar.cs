@@ -33,8 +33,7 @@ public class HPBar : MonoBehaviour
             transform.LookAt(player.transform, Vector3.up);
             
         }
-        if (_isCoroutine)
-            return;
+        
         if (entity.CurrentHp > hps.Count)
             StartCoroutine(GainHP());
         else if (entity.CurrentHp < hps.Count)
@@ -65,14 +64,18 @@ public class HPBar : MonoBehaviour
 
     IEnumerator GainHP()
     {
+        
         _isCoroutine = true;
+        
         var hp = Instantiate(hpPrefab, transform);
         //hp.GetComponent<Image>().sprite = sprites[Random.Range(0, sprites.Count)];
         var hpRectT = hp.GetComponent<RectTransform>();
+        int i = hps.Count;
         hps.Add((hp, hpRectT));
-
+        
+        yield return new WaitForSeconds(1f);
         float time = Time.time + 0.5f;
-        hpRectT.position = transform.position + new Vector3(70  * GetComponentInParent<Canvas>().pixelRect.width /800 * (hps.Count - 1), 500 , 0);
+        hpRectT.position = transform.position + new Vector3(70  * GetComponentInParent<Canvas>().pixelRect.width /800 * (i), 500 , 0);
 
         while (time > Time.time)
         {
@@ -85,6 +88,13 @@ public class HPBar : MonoBehaviour
 
     public void Shot()
     {
+        if(!_isCoroutine)
+        StartCoroutine(Shoot());
+    }
+
+    IEnumerator Shoot()
+    {
+        yield return new WaitForSeconds(0.2f);
         foreach (var hp in hps)
         {
             hp.hp.GetComponent<Animator>().Play("heart_shot", -1, 0);
