@@ -62,19 +62,31 @@ public class Player : Entity
 
         if (IsDead)
             return;
-        if (_rigidbody.velocity.magnitude > 0.1 && !_shotgunAnimator.GetCurrentAnimatorStateInfo(0).IsName("Shoot")) _shotgunAnimator.Play("Walk");
-        else if (!_shotgunAnimator.GetCurrentAnimatorStateInfo(0).IsName("Shoot")) _shotgunAnimator.Play("ShotgunIdle");
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-            Fire();
-        if (Input.GetKeyDown(KeyCode.E))
-            ReceiveDamage(1);
-        if (Input.GetKeyDown(KeyCode.Q))
-            ReceiveDamage(-1);
-        if (Input.GetKeyDown(KeyCode.R))
+        if (_shotgunAnimator.GetCurrentAnimatorStateInfo(0).IsName("Shoot"))
+        {
+            return;
+        }
+            if (_rigidbody.velocity.magnitude > 0.1 && !_shotgunAnimator.GetCurrentAnimatorStateInfo(0).IsName("ShotgunReload")) _shotgunAnimator.Play("Walk");
+            else if (!_shotgunAnimator.GetCurrentAnimatorStateInfo(0).IsName("ShotgunReload")) _shotgunAnimator.Play("ShotgunIdle");
+
+            if (Input.GetKeyDown(KeyCode.Mouse0) && !_shotgunAnimator.GetCurrentAnimatorStateInfo(0).IsName("ShotgunReload"))
+            {
+                Fire();
+                return;
+            }
+            if (Input.GetKeyDown(KeyCode.E))
+                ReceiveDamage(1);
+            if (Input.GetKeyDown(KeyCode.Q))
+                ReceiveDamage(-1);
+        if (/*Input.GetKeyDown(KeyCode.R)||*/!gameManager.reloaded&&gameManager.GetAmountOfAmmo()>0)
+        {
             gameManager.Reload();
-        if (_shotgunAnimator.GetCurrentAnimatorStateInfo(0).IsName("Shoot") && _shotgunAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime * _shotgunAnimator.GetCurrentAnimatorStateInfo(0).length <= 0.3 && _shotgunAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime * _shotgunAnimator.GetCurrentAnimatorStateInfo(0).length >= 0.2) flash.SetActive(true);
-        else flash.SetActive(false);
+            _shotgunAnimator.Play("ShotgunReload");
+        }
+            if (_shotgunAnimator.GetCurrentAnimatorStateInfo(0).IsName("Shoot") && _shotgunAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime * _shotgunAnimator.GetCurrentAnimatorStateInfo(0).length <= 0.3 && _shotgunAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime * _shotgunAnimator.GetCurrentAnimatorStateInfo(0).length >= 0.2) flash.SetActive(true);
+            else flash.SetActive(false);
+        
 
     }
     public void Death()
@@ -99,8 +111,9 @@ public class Player : Entity
         {
             _shotgunAudioSorce.PlayOneShot(sounds[1]);
         }
+        _shotgunAnimator.Play("Shoot");
         gameManager.CollectAmmo(-ammoPerShot);
         weapon.Fire();
-        _shotgunAnimator.Play("Shoot");
+
     }
 }

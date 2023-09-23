@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TMPro.TMP_Text moneyField;
     public int moneyOnMap;
     [SerializeField] TMPro.TMP_Text ammoField;
-    
+    [SerializeField] Animator _shotgunAnimator;
 
     void Start()
     {
@@ -35,7 +35,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void Shot()
@@ -101,5 +100,9 @@ public class GameManager : MonoBehaviour
         enemiesBeforeSmash = 0;
         canSmash = enemiesBeforeSmash >= enemiesForSmash;
         DrawSmash();
+    }
+    public int GetAmountOfAmmo()
+    {
+        return amountOfAmmo;
     }
 }

@@ -26,7 +26,5 @@ public class DestructibleController : MonoBehaviour
             nmu.UpdateNavMesh();
         Destroy(gameObject);
     }
-    public void OnDestroy()
-    {
-    }
+
 }
