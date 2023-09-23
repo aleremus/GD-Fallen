@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private int CoinsCollected;
+    public int CoinsCollected;
     private int EnemiesKilled;
     [SerializeField] private int amountOfAmmo;
 
@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     private int enemiesBeforeSmash;
 
     [SerializeField] TMPro.TMP_Text moneyField;
-    int moneyOnMap;
+    public int moneyOnMap;
     [SerializeField] TMPro.TMP_Text ammoField;
     
 
