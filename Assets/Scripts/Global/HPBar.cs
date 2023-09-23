@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class HPBar : MonoBehaviour
 {
+
+
     RectTransform rectTransform;
     [SerializeField] GameObject hpPrefab;
     [SerializeField] Entity entity;
@@ -25,7 +27,7 @@ public class HPBar : MonoBehaviour
     void Update()
     {
 
-        
+
         if (entity is not Player)
         {
             transform.LookAt(player.transform, Vector3.up);
@@ -53,7 +55,7 @@ public class HPBar : MonoBehaviour
 
         while (time > Time.time)
         {
-            hp.transform.Translate(Vector3.up * Time.deltaTime * 1000);
+            hp.transform.Translate(Vector3.up * Time.deltaTime * 1000, Space.World);
             yield return new WaitForEndOfFrame();
         }
 
@@ -64,21 +66,30 @@ public class HPBar : MonoBehaviour
     IEnumerator GainHP()
     {
         _isCoroutine = true;
-        var hp = Instantiate(hpPrefab, rectTransform);
+        var hp = Instantiate(hpPrefab, transform);
         //hp.GetComponent<Image>().sprite = sprites[Random.Range(0, sprites.Count)];
         var hpRectT = hp.GetComponent<RectTransform>();
         hps.Add((hp, hpRectT));
 
         float time = Time.time + 0.5f;
-        hpRectT.Translate(Vector3.right * hpRectT.rect.width * transform.localScale.x * (hps.Count - 1));
-        hpRectT.Translate(Vector3.up * 500);
+        hpRectT.position = transform.position + new Vector3(70  * GetComponentInParent<Canvas>().pixelRect.width /800 * (hps.Count - 1), 500 , 0);
 
         while (time > Time.time)
         {
-            hp.transform.Translate(Vector3.down * Time.deltaTime * 1000);
+            hp.transform.Translate(Vector3.down * Time.deltaTime * 1000, Space.World);
             yield return new WaitForEndOfFrame();
         }
         _isCoroutine = false;
 
+    }
+
+    public void Shot()
+    {
+        foreach (var hp in hps)
+        {
+            hp.hp.GetComponent<Animator>().Play("heart_shot", -1, 0);
+            hp.hp.GetComponent<Animator>().SetFloat("Rand", Random.Range(1, 1.4f));
+
+        }
     }
 }

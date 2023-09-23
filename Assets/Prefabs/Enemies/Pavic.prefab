@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8576601825577297735}
   - component: {fileID: 969531226982825290}
   - component: {fileID: 7315414160320945244}
+  - component: {fileID: 5162680494735540850}
   m_Layer: 0
   m_Name: Pavic
   m_TagString: Untagged
@@ -85,9 +86,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02f168d80ebd3b64c954e89dc14cc468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsDead: 0
+  deathAnimationTime: 0.35
   attackCooldown: 5
   maxHP: 2
   damage: 1
+--- !u!65 &5162680494735540850
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5276847981345653803}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.6357841, y: 1.283821, z: 1}
+  m_Center: {x: 0.0124874115, y: 0.64138705, z: 0}
 --- !u!1001 &4028584849180027189
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -117,7 +133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e31951bc351a1f24e989048c01e156c9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: 0.541
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e31951bc351a1f24e989048c01e156c9, type: 3}
       propertyPath: m_LocalPosition.z

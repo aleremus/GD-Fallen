@@ -8,6 +8,7 @@ public class Entity : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    public bool IsDead;
     public int CurrentHp { get; set; }
 
     [SerializeField] public int MaxHP { get; set; }
@@ -18,5 +19,6 @@ public class Entity : MonoBehaviour
     virtual public void DealDamage(Entity reciever, int damage) { }
 
     virtual public void ReceiveDamage(int damage) { }
+    virtual public void Die() { }
 
 }

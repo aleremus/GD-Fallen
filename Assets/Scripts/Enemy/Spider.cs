@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Spider : Enemy
 {
-
+    [SerializeField] float deathAnimationTime;
     [SerializeField] float attackCooldown;
     [SerializeField] int maxHP;
     [SerializeField] int damage;
     Player player;
     float _nextAttack;
     
+
 
     private void Awake()
     {
@@ -30,6 +32,28 @@ public class Spider : Enemy
         
     }
 
+    public override void Die()
+    {
+        StartCoroutine(Death());
+    }
+
+    IEnumerator Death()
+    {
+        IsDead = true;
+        GameManager gameManager = FindObjectOfType<GameManager>();
+        if (gameManager)
+            gameManager.EnemiesKilled++;
+        GetComponent<Collider>().enabled = false;
+        GetComponent<NavMeshAgent>().enabled = false;
+        GetComponent<EnemyMovement>().enabled = false;
+        float time = Time.time + deathAnimationTime;
+        while (time > Time.time)
+        {
+            transform.Rotate(Vector3.left * 90 /  deathAnimationTime * Time.deltaTime);
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
     void Attack()
     {
         if (_nextAttack > Time.time)
@@ -41,6 +65,9 @@ public class Spider : Enemy
 
     private void OnCollisionStay(Collision collision)
     {
+
+        if (IsDead)
+            return;
         if (collision.gameObject.tag != "Player")
         {
             return;

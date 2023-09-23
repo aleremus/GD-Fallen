@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public int CoinsCollected;
     public int EnemiesKilled;
+    public int amountOfAmmo;
     void Start()
     {
         

@@ -12,6 +12,8 @@ public class Enemy : Entity
 
     override public void ReceiveDamage(int damage)
     {
+        if (IsDead)
+            return;
         CurrentHp -= damage;
         if (damage > 0)
         {
@@ -21,6 +23,9 @@ public class Enemy : Entity
 
         }
         CurrentHp = Mathf.Clamp(CurrentHp, 0, MaxHP);
+        if (CurrentHp <= 0)
+            Die();
+
     }
 
     // Start is called before the first frame update
