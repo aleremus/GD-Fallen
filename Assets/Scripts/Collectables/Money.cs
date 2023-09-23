@@ -60,7 +60,7 @@ public class Money : MonoBehaviour
             return;
         }
 
-        FindObjectOfType<GameManager>().CoinsCollected++;
+        FindObjectOfType<GameManager>().CollectCoin();
         GameObject.Destroy(gameObject);
     }
 }
