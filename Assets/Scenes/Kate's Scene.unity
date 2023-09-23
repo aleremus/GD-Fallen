@@ -268,6 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14dba95d48fe16e419e8333b97b7d272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _shotgunAnimator: {fileID: 0}
   weapon: {fileID: 1829225693}
   maxHP: 5
   _canvasController: {fileID: 0}
@@ -1165,11 +1166,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6856027824470485568, guid: f6fa2c690439da54eb67f96b172191b9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7775161
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6856027824470485568, guid: f6fa2c690439da54eb67f96b172191b9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.651
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6856027824470485568, guid: f6fa2c690439da54eb67f96b172191b9, type: 3}
       propertyPath: m_LocalRotation.w
