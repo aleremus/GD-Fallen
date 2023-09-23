@@ -14,6 +14,8 @@ public class Enemy : Entity
     {
         if (IsDead)
             return;
+
+        GetComponentInParent<EnemyMovement>().ResetAgro();
         CurrentHp -= damage;
         if (damage > 0)
         {

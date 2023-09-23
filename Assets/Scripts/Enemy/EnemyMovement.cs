@@ -9,6 +9,8 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] List<Transform> patrolPonts;
     [SerializeField] float speed;
     [SerializeField] float fov;
+    [SerializeField] float fovRadius;
+    [SerializeField] float anyDetectionRadius;
     [SerializeField] float agroTime;
 
     NavMeshAgent agent;
@@ -61,7 +63,7 @@ public class EnemyMovement : MonoBehaviour
     }
 
 
-    void ResetAgro()
+    public void ResetAgro()
     {
         _agroTime = agroTime;
         _agro = true;
@@ -70,12 +72,14 @@ public class EnemyMovement : MonoBehaviour
 
     bool DoesSeePlayer()
     {
+        if ((player.transform.position - transform.position).sqrMagnitude < anyDetectionRadius * anyDetectionRadius)
+            return true;
         if (Vector3.Angle(transform.forward, player.transform.position - transform.position) > fov)
             return false;
 
         RaycastHit raycastHit;
 
-        Physics.Raycast(transform.position, player.transform.position - transform.position, out raycastHit);
+        Physics.Raycast(transform.position, player.transform.position - transform.position, out raycastHit, fovRadius);
 
         if (raycastHit.collider)
         {
