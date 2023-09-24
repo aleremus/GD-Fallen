@@ -37,6 +37,8 @@ public class GameOver : MonoBehaviour
 
     IEnumerator Credits()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         Time.timeScale = 0;
         win = true;
         float time = 0;
@@ -72,6 +74,6 @@ public class GameOver : MonoBehaviour
 
     public void Exit()
     {
-        Application.Quit();
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 }
