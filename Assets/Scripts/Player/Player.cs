@@ -82,7 +82,7 @@ public class Player : Entity
 
             if (Input.GetKeyDown(KeyCode.Mouse0) && !_shotgunAnimator.GetCurrentAnimatorStateInfo(0).IsName("ShotgunReload"))
             {
-            if (gameManager.GetAmountOfAmmo()! > 0)
+            if (gameManager.GetAmountOfAmmo() <= 0)
             {
                 Cut();
             }
