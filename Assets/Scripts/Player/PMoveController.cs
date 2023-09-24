@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class PMoveController : MonoBehaviour
 {
+
     [SerializeField]private GameObject cameraObject;
     //Run
     [SerializeField]private float movementSpeed = 5;
@@ -52,6 +53,8 @@ public class PMoveController : MonoBehaviour
     float jumpBufferTime = 0;
     bool isGrounded = false;
     private Rigidbody rb;
+    List<AudioClip> stepSounds = new();
+    private AudioSource _audioSource;
 
     void Awake()
     {
@@ -60,6 +63,7 @@ public class PMoveController : MonoBehaviour
         dash.AddListener(InstantSpeedUp);
         rb = gameObject.GetComponent<Rigidbody>();
         move.AddListener(MoveFixed);
+        _audioSource = GetComponent<AudioSource>();
 
     }
     // Start is called before the first frame update
@@ -101,6 +105,11 @@ public class PMoveController : MonoBehaviour
         if (Input.GetKeyDown(shootButton) && shoot != null) shoot.Invoke();
         isGrounded = GroundCheck();
         rb.velocity = velocity;
+        if (rb.velocity.magnitude > 0.1 && _audioSource != null &&!_audioSource.isPlaying)
+        {
+            _audioSource.clip = stepSounds?.ToArray()[Random.Range(0, stepSounds.Count-1)];
+            _audioSource?.Play();
+        }
     }
 
     private void FixedUpdate()
