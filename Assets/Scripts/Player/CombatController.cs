@@ -75,6 +75,7 @@ public class CombatController : MonoBehaviour
         }
         currentCombo--;
 
+        if (target != null)
         target.GetComponent<DestructibleController>().Destroy();
     }
 }

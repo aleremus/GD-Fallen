@@ -65,9 +65,15 @@ public class Player : Entity
 
         if (_shotgunAnimator.GetCurrentAnimatorStateInfo(0).IsName("Shoot"))
         {
+            if (_shotgunAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime * _shotgunAnimator.GetCurrentAnimatorStateInfo(0).length <= 0.3 && _shotgunAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime * _shotgunAnimator.GetCurrentAnimatorStateInfo(0).length >= 0.2) flash.SetActive(true);
+            else
+            {
+                flash.SetActive(false);
+            }
             return;
         }
-            if (_rigidbody.velocity.magnitude > 0.1 && !_shotgunAnimator.GetCurrentAnimatorStateInfo(0).IsName("ShotgunReload")) _shotgunAnimator.Play("Walk");
+
+        if (_rigidbody.velocity.magnitude > 0.1 && !_shotgunAnimator.GetCurrentAnimatorStateInfo(0).IsName("ShotgunReload")) _shotgunAnimator.Play("Walk");
             else if (!_shotgunAnimator.GetCurrentAnimatorStateInfo(0).IsName("ShotgunReload")) _shotgunAnimator.Play("ShotgunIdle");
 
             if (Input.GetKeyDown(KeyCode.Mouse0) && !_shotgunAnimator.GetCurrentAnimatorStateInfo(0).IsName("ShotgunReload"))
@@ -84,8 +90,7 @@ public class Player : Entity
             gameManager.Reload();
             _shotgunAnimator.Play("ShotgunReload");
         }
-            if (_shotgunAnimator.GetCurrentAnimatorStateInfo(0).IsName("Shoot") && _shotgunAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime * _shotgunAnimator.GetCurrentAnimatorStateInfo(0).length <= 0.3 && _shotgunAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime * _shotgunAnimator.GetCurrentAnimatorStateInfo(0).length >= 0.2) flash.SetActive(true);
-            else flash.SetActive(false);
+
         
 
     }
