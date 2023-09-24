@@ -12,6 +12,7 @@ public class ShotGun : Weapon
     [SerializeField] GameObject bulletHolePrefab;
     [SerializeField] float cooldown;
     [SerializeField] float radius;
+    [SerializeField] float knifeRadius;
     [SerializeField] Vector3 inAccuracy;
     [SerializeField] int rays;
     public override void Fire()
@@ -49,7 +50,7 @@ public class ShotGun : Weapon
         RaycastHit raycastHit;
         for (int i = 0; i < 5; i++)
         {
-            Physics.Raycast(transform.position, transform.forward-transform.right/4+transform.right*0.125f*i, out raycastHit, radius);
+            Physics.Raycast(transform.position, transform.forward-transform.right/4+transform.right*0.125f*i, out raycastHit, knifeRadius);
 
             if (raycastHit.collider)
             {
