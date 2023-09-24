@@ -77,7 +77,7 @@ public class HPBar : MonoBehaviour
         float time = Time.time + 0.5f;
         hpRectT.position = transform.position + new Vector3(70  * GetComponentInParent<Canvas>().pixelRect.width /800 * (i), 500 , 0);
 
-        while (time > Time.time)
+        while (time > Time.time&&hp.transform.position.y >= transform.position.y)
         {
             hp.transform.Translate(Vector3.down * Time.deltaTime * 1000, Space.World);
             yield return new WaitForEndOfFrame();
