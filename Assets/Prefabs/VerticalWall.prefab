@@ -121,6 +121,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1622015098358904996}
     m_Modifications:
+    - target: {fileID: 5379330315823246731, guid: 960ceb5df4c024c44b8ef796b9072717, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 1622015098358904999}
     - target: {fileID: 6082526585405442368, guid: 960ceb5df4c024c44b8ef796b9072717, type: 3}
       propertyPath: m_Name
       value: torch
@@ -195,6 +199,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1622015098358904996}
     m_Modifications:
+    - target: {fileID: 5379330315823246731, guid: 960ceb5df4c024c44b8ef796b9072717, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 1622015098358904999}
     - target: {fileID: 6082526585405442368, guid: 960ceb5df4c024c44b8ef796b9072717, type: 3}
       propertyPath: m_Name
       value: torch (1)
