@@ -8,6 +8,8 @@ public class Heart : MonoBehaviour
     [SerializeField] float oscilationSpeed;
     [SerializeField] float oscilationHeight;
     [SerializeField] float rotationSpeed;
+    [SerializeField] AudioSource audioSource;
+
 
     float _startY;
     bool _goingUp;
@@ -66,6 +68,7 @@ public class Heart : MonoBehaviour
             return;
         }
 
+        audioSource.Play();
         player.ReceiveDamage(-1);
         GameObject.Destroy(gameObject);
     }

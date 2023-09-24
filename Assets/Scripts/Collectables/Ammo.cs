@@ -9,6 +9,7 @@ public class Ammo : MonoBehaviour
     [SerializeField] float oscilationSpeed;
     [SerializeField] float oscilationHeight;
     [SerializeField] float rotationSpeed;
+    [SerializeField] AudioSource audioSource;
 
     float _startY;
     bool _goingUp;
@@ -60,6 +61,7 @@ public class Ammo : MonoBehaviour
         {
             return;
         }
+        audioSource.Play();
 
         FindObjectOfType<GameManager>().CollectAmmo(ammoInPack);
         GameObject.Destroy(gameObject);
