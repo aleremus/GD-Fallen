@@ -38,16 +38,18 @@ public class GameOver : MonoBehaviour
 
     IEnumerator Credits()
     {
+        foreach (var entity in FindObjectsOfType<Entity>())
+            entity.gameObject.SetActive(false);
         pMoveController.enabled = false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         win = true;
         float time = 0;
 
         while (time < blackOutTime)
         {
-            time += Time.fixedDeltaTime;
+            time += Time.deltaTime;
             black.color = new Color(0, 0, 0, time / blackOutTime);
             yield return new WaitForEndOfFrame();
         }
@@ -56,7 +58,7 @@ public class GameOver : MonoBehaviour
 
         while(credits.transform.position.y < creditsStop.position.y)
         {
-            credits.transform.Translate(Vector3.up * Time.fixedDeltaTime * CreditsSpeed);
+            credits.transform.Translate(Vector3.up * Time.deltaTime * CreditsSpeed);
             yield return new WaitForEndOfFrame();
         }
     }

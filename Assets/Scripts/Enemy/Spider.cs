@@ -100,7 +100,19 @@ public class Spider : Enemy
             return;
         }
         Attack();
+    }private void OnCollisionEnter(Collision collision)
+    {
+
+        if (IsDead)
+            return;
+        if (collision.gameObject.tag != "Player")
+        {
+            return;
+        }
+        Attack();
     }
+
+    
 
 
 }

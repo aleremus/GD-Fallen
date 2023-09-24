@@ -8,7 +8,7 @@ public class StartMenu : MonoBehaviour
     // Start is called before the first frame update
 
     [SerializeField] Image black;
-    [SerializeField] Image tutorial;
+    [SerializeField] List<Image> tutorials;
     [SerializeField] float blackOutTime;
     [SerializeField] float tutorialTime;
     [SerializeField] TMPro.TMP_Text click;
@@ -43,7 +43,8 @@ public class StartMenu : MonoBehaviour
         while (time < tutorialTime)
         {
             time += Time.deltaTime;
-            tutorial.color = new Color(1, 1, 1, time / tutorialTime);
+            foreach(var tutorial in tutorials)
+                tutorial.color = new Color(1, 1, 1, time / tutorialTime);
             yield return new WaitForEndOfFrame();
         }
         yield return new WaitForSeconds(2);

@@ -119,11 +119,11 @@ AnimationClip:
       - serializedVersion: 3
         time: 5.5
         value: {x: 0, y: 0, z: -22.383}
-        inSlope: {x: 0, y: 0, z: 48.091583}
-        outSlope: {x: 0, y: 0, z: 48.091583}
+        inSlope: {x: 0, y: 0, z: 32.32434}
+        outSlope: {x: 0, y: 0, z: 32.32434}
         tangentMode: 0
         weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.3580822}
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.20781021}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -569,11 +569,11 @@ AnimationClip:
       - serializedVersion: 3
         time: 5.5
         value: -22.383
-        inSlope: 48.091583
-        outSlope: 48.091583
+        inSlope: 32.32434
+        outSlope: 32.32434
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.3580822
+        inWeight: 0.20781021
         outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -863,7 +863,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: 
+    path: rope/heart
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -873,17 +873,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: 
-    classID: 224
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: 
+    path: rope/heart
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -902,8 +892,18 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: 
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: rope/heart
+    path: 
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -913,7 +913,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: rope/heart
+    path: 
     classID: 224
     script: {fileID: 0}
   m_HasGenericRootTransform: 1
