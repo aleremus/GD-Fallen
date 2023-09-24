@@ -92,10 +92,6 @@ public class Player : Entity
             }
                 return;
             }
-            if (Input.GetKeyDown(KeyCode.E))
-                ReceiveDamage(1);
-            if (Input.GetKeyDown(KeyCode.Q))
-                ReceiveDamage(-1);
         if (/*Input.GetKeyDown(KeyCode.R)||*/!gameManager.reloaded&&gameManager.GetAmountOfAmmo()>0)
         {
             gameManager.Reload();
