@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
 {
+    [SerializeField] PMoveController pMoveController;
     [SerializeField] AnimationCurve curve;
     [SerializeField] Image black; 
     [SerializeField] GameObject credits;
@@ -37,6 +38,7 @@ public class GameOver : MonoBehaviour
 
     IEnumerator Credits()
     {
+        pMoveController.enabled = false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         Time.timeScale = 0;

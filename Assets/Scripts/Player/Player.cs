@@ -20,6 +20,9 @@ public class Player : Entity
 
     private void Awake()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1f;
         MaxHP = maxHP;
         CurrentHp = MaxHP;
         _rigidbody = GetComponent<Rigidbody>();
@@ -105,6 +108,10 @@ public class Player : Entity
     public void Death()
     {
         _canvasController.RestartShow();
+        GetComponent<PMoveController>().enabled = false;
+        Time.timeScale = 0f;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
     private void Cut()
     {
