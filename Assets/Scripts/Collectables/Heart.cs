@@ -70,6 +70,8 @@ public class Heart : MonoBehaviour
 
         audioSource.Play();
         player.ReceiveDamage(-1);
-        GameObject.Destroy(gameObject);
+        GetComponent<Collider>().enabled = false;
+        GetComponentInChildren<MeshRenderer>().enabled = false;
+        this.enabled = false;
     }
 }

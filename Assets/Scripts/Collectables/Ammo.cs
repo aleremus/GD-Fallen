@@ -64,6 +64,9 @@ public class Ammo : MonoBehaviour
         audioSource.Play();
 
         FindObjectOfType<GameManager>().CollectAmmo(ammoInPack);
-        GameObject.Destroy(gameObject);
+
+        GetComponent<Collider>().enabled = false;
+        GetComponentInChildren<MeshRenderer>().enabled = false;
+        this.enabled = false;
     }
 }

@@ -64,6 +64,9 @@ public class Money : MonoBehaviour
         audioSource.Play();
 
         FindObjectOfType<GameManager>().CollectCoin();
-        GameObject.Destroy(gameObject);
+
+        GetComponent<Collider>().enabled = false;
+        GetComponentInChildren<MeshRenderer>().enabled = false;
+        this.enabled = false;
     }
 }
