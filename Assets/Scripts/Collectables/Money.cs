@@ -8,6 +8,8 @@ public class Money : MonoBehaviour
     [SerializeField] float oscilationSpeed;
     [SerializeField] float oscilationHeight;
     [SerializeField] float rotationSpeed;
+    [SerializeField] AudioSource audioSource;
+
 
     float _startY;
     bool _goingUp;
@@ -59,6 +61,7 @@ public class Money : MonoBehaviour
         {
             return;
         }
+        audioSource.Play();
 
         FindObjectOfType<GameManager>().CollectCoin();
         GameObject.Destroy(gameObject);
