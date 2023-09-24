@@ -6,5 +6,6 @@ public class Weapon : MonoBehaviour
 {
     public float shootingRate;
     virtual public void Fire() { }
+    virtual public void Cut() { }
 
 }

@@ -8,6 +8,7 @@ public class ShotGun : Weapon
     //public float shootingRate;
     [SerializeField] bool hasBulletHole;
     [SerializeField] int damage;
+    [SerializeField] int cutDamage;
     [SerializeField] GameObject bulletHolePrefab;
     [SerializeField] float cooldown;
     [SerializeField] float radius;
@@ -20,7 +21,7 @@ public class ShotGun : Weapon
         {
             RaycastHit raycastHit;
 
-            Physics.Raycast(transform.position, transform.forward+inAccuracy*Random.Range(-1,1)*i/rays, out raycastHit, radius);
+            Physics.Raycast(transform.position, transform.forward + inAccuracy * Random.Range(-1, 1) * i / rays, out raycastHit, radius);
 
             if (raycastHit.collider)
             {
@@ -40,6 +41,10 @@ public class ShotGun : Weapon
                 }
             }
         }
+
+    }
+    public override void Cut()
+    {
 
     }
 }

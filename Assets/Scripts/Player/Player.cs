@@ -72,13 +72,24 @@ public class Player : Entity
             }
             return;
         }
+        else if(_shotgunAnimator.GetCurrentAnimatorStateInfo(0).IsName("BoxCutter"))
+        {
+            return;
+        }
 
         if (_rigidbody.velocity.magnitude > 0.1 && !_shotgunAnimator.GetCurrentAnimatorStateInfo(0).IsName("ShotgunReload")) _shotgunAnimator.Play("Walk");
             else if (!_shotgunAnimator.GetCurrentAnimatorStateInfo(0).IsName("ShotgunReload")) _shotgunAnimator.Play("ShotgunIdle");
 
             if (Input.GetKeyDown(KeyCode.Mouse0) && !_shotgunAnimator.GetCurrentAnimatorStateInfo(0).IsName("ShotgunReload"))
             {
+            if (gameManager.GetAmountOfAmmo()! > 0)
+            {
+                Cut();
+            }
+            else
+            {
                 Fire();
+            }
                 return;
             }
             if (Input.GetKeyDown(KeyCode.E))
@@ -97,6 +108,11 @@ public class Player : Entity
     public void Death()
     {
         _canvasController.RestartShow();
+    }
+    private void Cut()
+    {
+        _shotgunAnimator.Play("BoxCutter");
+        weapon.Cut();
     }
     private void Fire()
     {
