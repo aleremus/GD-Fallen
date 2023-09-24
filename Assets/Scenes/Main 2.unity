@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.12107852, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7506,8 +7506,10 @@ MonoBehaviour:
   _canvasController: {fileID: 1290244886}
   sounds:
   - {fileID: 0}
+  - {fileID: 8300000, guid: 02560adcadb41f442b53672e28853827, type: 3}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 8300000, guid: 79e14fb7c9033fd4aa4b6fc7bfcf3ab0, type: 3}
 --- !u!1 &1371439458
 GameObject:
   m_ObjectHideFlags: 0
@@ -34321,6 +34323,7 @@ MonoBehaviour:
   shootingRate: 0
   hasBulletHole: 0
   damage: 1
+  cutDamage: 0
   bulletHolePrefab: {fileID: 0}
   cooldown: 2
   radius: 100
