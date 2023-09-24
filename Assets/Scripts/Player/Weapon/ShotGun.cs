@@ -65,7 +65,7 @@ public class ShotGun : Weapon
 
                 if (raycastHit.collider.gameObject.TryGetComponent<Entity>(out entity))
                 {
-                    entity.ReceiveDamage(damage);
+                    entity.ReceiveDamage(4);
                     Debug.Log(damage);
                 }
             }

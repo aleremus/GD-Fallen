@@ -95,6 +95,7 @@ public class Player : Entity
         if (/*Input.GetKeyDown(KeyCode.R)||*/!gameManager.reloaded&&gameManager.GetAmountOfAmmo()>0)
         {
             gameManager.Reload();
+            _shotgunAudioSorce.PlayOneShot(sounds[4]);
             _shotgunAnimator.Play("ShotgunReload");
         }
 
@@ -108,6 +109,7 @@ public class Player : Entity
     private void Cut()
     {
         _shotgunAnimator.Play("BoxCutter");
+        _shotgunAudioSorce.PlayOneShot(sounds[0]);
         weapon.Cut();
     }
     private void Fire()

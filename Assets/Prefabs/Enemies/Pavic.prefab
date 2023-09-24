@@ -5104,34 +5104,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9424567, y: 0.18728985, z: 1.0761161}
   m_Center: {x: 9.064121e-19, y: 0.0015577044, z: -7.5969955e-18}
---- !u!114 &8081091442203280711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4262939907794162788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02f168d80ebd3b64c954e89dc14cc468, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsDead: 0
-  deathAnimationTime: 0.35
-  attackCooldown: 5
-  maxHP: 2
-  damage: 1
-  particleSystem: {fileID: 679009415160156742}
-  DieSounds:
-  - {fileID: 8300000, guid: 8f5827dde3aa56e45b96b2782aa76b2a, type: 3}
-  - {fileID: 8300000, guid: 1bf904c521b7d0145af3aa37e501d3de, type: 3}
-  RecieveDamageSounds:
-  - {fileID: 8300000, guid: 40539e156c2f3dc47a4e909bb3ce3ef7, type: 3}
-  - {fileID: 8300000, guid: e14ac77264d5238439cf38ed77aed6f7, type: 3}
-  - {fileID: 8300000, guid: 91c9a0d96c1518843b9ce1a2d0692f31, type: 3}
-  AttackSounds:
-  - {fileID: 8300000, guid: db13a11f5afc2624c9119ae2bf80ccac, type: 3}
-  - {fileID: 8300000, guid: 380c282da41a1524f9996f8c1c4d1db7, type: 3}
 --- !u!82 &7470596643577096850
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5228,3 +5200,31 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8081091442203280711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4262939907794162788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02f168d80ebd3b64c954e89dc14cc468, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDead: 0
+  deathAnimationTime: 0.35
+  attackCooldown: 5
+  maxHP: 11
+  damage: 1
+  particleSystem: {fileID: 679009415160156742}
+  DieSounds:
+  - {fileID: 8300000, guid: 8f5827dde3aa56e45b96b2782aa76b2a, type: 3}
+  - {fileID: 8300000, guid: 1bf904c521b7d0145af3aa37e501d3de, type: 3}
+  RecieveDamageSounds:
+  - {fileID: 8300000, guid: 40539e156c2f3dc47a4e909bb3ce3ef7, type: 3}
+  - {fileID: 8300000, guid: e14ac77264d5238439cf38ed77aed6f7, type: 3}
+  - {fileID: 8300000, guid: 91c9a0d96c1518843b9ce1a2d0692f31, type: 3}
+  AttackSounds:
+  - {fileID: 8300000, guid: db13a11f5afc2624c9119ae2bf80ccac, type: 3}
+  - {fileID: 8300000, guid: 380c282da41a1524f9996f8c1c4d1db7, type: 3}

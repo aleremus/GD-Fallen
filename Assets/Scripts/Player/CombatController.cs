@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CombatController : MonoBehaviour
 {
+    [SerializeField] private AudioSource audioSource;
     [SerializeField] private int maxCombo;
     [SerializeField] private KeyCode key;
     [SerializeField] private KeyCode debugKey;
@@ -74,7 +75,7 @@ public class CombatController : MonoBehaviour
             particle.transform.rotation = target.transform.rotation;
         }
         currentCombo--;
-
+        audioSource.Play();
         if (target != null)
         target.GetComponent<DestructibleController>().Destroy();
     }

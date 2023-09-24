@@ -53,7 +53,7 @@ public class PMoveController : MonoBehaviour
     float jumpBufferTime = 0;
     bool isGrounded = false;
     private Rigidbody rb;
-    List<AudioClip> stepSounds = new();
+    [SerializeField]private List<AudioClip> stepSounds = new();
     private AudioSource _audioSource;
 
     void Awake()

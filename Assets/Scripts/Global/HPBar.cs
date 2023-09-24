@@ -82,6 +82,7 @@ public class HPBar : MonoBehaviour
             hp.transform.Translate(Vector3.down * Time.deltaTime * 1000, Space.World);
             yield return new WaitForEndOfFrame();
         }
+        if (transform.position.y >= hp.transform.position.y) hp.transform.position = new Vector3(hp.transform.position.x,transform.position.y, hp.transform.position.z);
         _isCoroutine = false;
 
     }
