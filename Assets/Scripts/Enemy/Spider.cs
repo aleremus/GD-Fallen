@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(AudioSource))]
 public class Spider : Enemy
 {
     [SerializeField] float deathAnimationTime;
@@ -10,7 +11,11 @@ public class Spider : Enemy
     [SerializeField] int maxHP;
     [SerializeField] int damage;
     [SerializeField] ParticleSystem particleSystem;
+    [SerializeField] List<AudioClip> DieSounds;
+    [SerializeField] List<AudioClip> RecieveDamageSounds;
+    [SerializeField] List<AudioClip> AttackSounds;
 
+    AudioSource audioSource;
     Rigidbody rigidbody;
     Player player;
     float _nextAttack;
@@ -20,6 +25,7 @@ public class Spider : Enemy
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
         MaxHP = maxHP;
         CurrentHp = MaxHP;
         _nextAttack = Time.time;
@@ -27,8 +33,12 @@ public class Spider : Enemy
 
     public override void ReceiveDamage(int damage)
     {
-        
-            particleSystem.Play();
+        if (IsDead)
+            return;
+
+        particleSystem.Play();
+        audioSource.PlayOneShot(RecieveDamageSounds[Random.Range(0, RecieveDamageSounds.Count)]);
+
         base.ReceiveDamage(damage);
         
     }
@@ -55,6 +65,7 @@ public class Spider : Enemy
         GameManager gameManager = FindObjectOfType<GameManager>();
         if (gameManager)
             gameManager.KillEnemy();
+        audioSource.PlayOneShot(DieSounds[Random.Range(0, DieSounds.Count)]);
         GetComponent<BoxCollider>().enabled = false;
         GetComponent<MeshCollider>().enabled = true;
         rigidbody.constraints = RigidbodyConstraints.None;
@@ -73,6 +84,7 @@ public class Spider : Enemy
             return;
         if (_nextAttack > Time.time)
             return;
+        audioSource.PlayOneShot(AttackSounds[Random.Range(0, AttackSounds.Count)]);
 
         _nextAttack = Time.time + attackCooldown;
         player.ReceiveDamage(damage);
