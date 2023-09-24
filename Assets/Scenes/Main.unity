@@ -18618,7 +18618,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CoinsCollected: 0
   amountOfAmmo: 10
-  enemiesForSmash: 2
+  enemiesForSmash: 0
   smashFill: {fileID: 667617680}
   smashField: {fileID: 141742979}
   canSmash: 1
@@ -18626,6 +18626,7 @@ MonoBehaviour:
   moneyField: {fileID: 1935818089}
   moneyOnMap: 0
   ammoField: {fileID: 677545788}
+  _shotgunAnimator: {fileID: 0}
 --- !u!1001 &1693114517
 PrefabInstance:
   m_ObjectHideFlags: 0
