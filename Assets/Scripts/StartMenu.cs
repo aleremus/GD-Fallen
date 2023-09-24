@@ -19,6 +19,7 @@ public class StartMenu : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         animator = GetComponent<Animator>();
         gameManager = FindObjectOfType<GameManager>();
     }
@@ -67,7 +68,7 @@ public class StartMenu : MonoBehaviour
         if (Input.anyKeyDown)
         {
             istutorial = false;
-            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Main 2");
         }
     }
 

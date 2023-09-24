@@ -71,11 +71,11 @@ public class GameOver : MonoBehaviour
 
     public void ExitToMainMenu()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("StartMenu");
     }
 
     public void Exit()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("StartMenu");
     }
 }
